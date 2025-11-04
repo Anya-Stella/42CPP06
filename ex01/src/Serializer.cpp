@@ -9,4 +9,7 @@ Data* Serializer::deserialize(uintptr_t raw)
 	return (reinterpret_cast<Data *>(raw));
 }
 
-/*.Do not write the default. */
+Serializer::Serializer() {}
+Serializer::Serializer(const Serializer&) {}
+Serializer& Serializer::operator=(const Serializer&) {return *this;}
+Serializer::~Serializer() {}
