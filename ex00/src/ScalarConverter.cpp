@@ -1,6 +1,13 @@
 #include "./ScalarConverter.hpp"
 #include <iostream>
 #include <iomanip>
+#include <cerrno>
+#include <climits>
+#include <cstdlib>
+#include <cctype>
+#include <limits>
+#include <cmath>
+
 
 
 /*.name space (helper of helper) */
@@ -119,7 +126,7 @@ void	ScalarConverter::printFromInt(long v)
 	if (v < 0 || 127 < v)
 		std::cout << "char: impossible" << std::endl;
 	else if (!isPrintableChar(static_cast<int>(v)))
-		std::cout << "char: Non Displayable" << std::endl;
+		std::cout << "char: Non displayable" << std::endl;
 	else
 		std::cout << "char: '" << static_cast<char>(v)<< "'" << std::endl;
 	
@@ -147,7 +154,7 @@ void	ScalarConverter::printFromFloat(float f, bool isPseudo)
 		std::cout << "char: '" << static_cast<char>(f)<< "'" << std::endl;
 
 	// int
-	if (!std::isfinite(f) || f < static_cast<float>(INT_MIN) || static_cast<float>(INT_MAX))
+	if (!std::isfinite(f) || f < static_cast<float>(INT_MIN) || static_cast<float>(INT_MAX) < f)
 		std::cout << "int: impossible" << std::endl;
 	else
 		std::cout << "int: " << static_cast<int>(f) << std::endl;
@@ -197,7 +204,7 @@ void	ScalarConverter::printFromDouble(double d, bool isPseudo)
 		std::cout << "char: '" << static_cast<char>(d) << "'" << std::endl;
 
 	// int
-	if (!std::isfinite(d) || d < static_cast<double>(INT_MIN) || static_cast<double>(INT_MAX))
+	if (!std::isfinite(d) || d < static_cast<double>(INT_MIN) || static_cast<double>(INT_MAX) < d)
 		std::cout << "int: impossible" << std::endl;
 	else
 		std::cout << "int: " << static_cast<int>(d) << std::endl;
