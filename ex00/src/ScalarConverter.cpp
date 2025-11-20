@@ -46,7 +46,7 @@ bool ScalarConverter::isCharLiteral(const std::string &s, char &out)
 bool ScalarConverter::isIntLiteral(const std::string& s, long &out)
 {
 	errno = 0;
-    char* end = nullptr;
+    char* end = 0;
     long v = std::strtol(s.c_str(), &end, 10);
 
     if (errno == ERANGE) return false;
@@ -73,7 +73,7 @@ bool ScalarConverter::isFloatLiteral(const std::string& s, float &out, bool &isP
 	std::string core = s.substr(0, s.size() - 1);
 
 	errno = 0;
-    char* end = nullptr;
+    char* end = 0;
     float v = std::strtof(core.c_str(), &end);
 
     if (errno == ERANGE || *end != '\0')
